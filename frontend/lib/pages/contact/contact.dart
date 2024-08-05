@@ -7,10 +7,8 @@ class ContactPage extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Contact us'),
-      ),
+    return Center(
+      child: Text('Contact'),
     );
   }
 }

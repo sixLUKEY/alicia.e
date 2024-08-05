@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/about/about.dart';
+import 'package:frontend/pages/catalog/catalog.dart';
+import 'package:frontend/pages/contact/contact.dart';
 import 'package:frontend/pages/home/home.dart';
+import 'package:frontend/widgets/navigation/navbar.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -9,20 +12,59 @@ class AppRouter {
       GlobalKey<NavigatorState>(debugLabel: 'shellB');
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.homeRoute,
+    initialLocation: Routes.aboutRoute,
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
-      GoRoute(
-        path: Routes.homeRoute,
-        builder: (BuildContext context, GoRouterState state) =>
-            const HomePage(),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return ScaffoldWithNestedNavigation(
+            navigationShell: navigationShell,
+          );
+        },
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.homeRoute,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: HomePage(),
+                ),
+              )
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.catalogRoute,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: CatalogPage(),
+                ),
+              )
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.aboutRoute,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: AboutPage(),
+                ),
+              )
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: Routes.contactRoute,
+                pageBuilder: (context, state) => const NoTransitionPage(
+                  child: ContactPage(),
+                ),
+              )
+            ],
+          )
+        ],
       ),
-      GoRoute(
-          path: Routes.aboutRoute,
-          builder: (BuildContext context, GoRouterState state) {
-            return const AboutPage();
-          }),
     ],
   );
 }
