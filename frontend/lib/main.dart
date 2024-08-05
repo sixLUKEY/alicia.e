@@ -25,6 +25,7 @@ class App extends StatelessWidget {
       title: 'Alicia.e',
       routerConfig: AppRouter.router,
       theme: brightness == Brightness.light ? theme.light() : theme.dark(),
+      // theme: theme.dark(),
     );
   }
 }
