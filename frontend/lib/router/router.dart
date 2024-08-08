@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/about/about.dart';
 import 'package:frontend/pages/catalog/catalog.dart';
+import 'package:frontend/pages/catalog/item_page.dart';
 import 'package:frontend/pages/contact/contact.dart';
 import 'package:frontend/pages/home/home.dart';
 import 'package:frontend/widgets/navigation/navbar.dart';
@@ -12,7 +13,7 @@ class AppRouter {
       GlobalKey<NavigatorState>(debugLabel: 'shellB');
 
   static final GoRouter router = GoRouter(
-    initialLocation: Routes.aboutRoute,
+    initialLocation: Routes.homeRoute,
     debugLogDiagnostics: true,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
@@ -34,12 +35,21 @@ class AppRouter {
             ],
           ),
           StatefulShellBranch(
+            navigatorKey: _shellNavigatorBKey,
             routes: [
               GoRoute(
                 path: Routes.catalogRoute,
                 pageBuilder: (context, state) => const NoTransitionPage(
                   child: CatalogPage(),
                 ),
+                routes: [
+                  GoRoute(
+                    path: ':id',
+                    builder: (context, state) => ItemPage(
+                      itemId: state.pathParameters['id']!,
+                    ),
+                  ),
+                ],
               )
             ],
           ),

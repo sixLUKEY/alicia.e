@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({
@@ -17,16 +18,42 @@ class ContactPage extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           const SizedBox(
-            height: 8,
+            height: 16,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.email),
-              SizedBox(
-                width: 8,
+              ElevatedButton(
+                onPressed: () async {
+                  var uri = Uri.parse(
+                      'https://www.facebook.com/share/8q4HtC2QMvHAoTUy/?mibextid=qi2Omg');
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri);
+                  } else {
+                    throw "Could not launch at this moment.";
+                  }
+                },
+                child: const Text(
+                  'Facebook',
+                ),
               ),
-              Text('example@email.com'),
+              const SizedBox(
+                width: 16,
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  var uri = Uri.parse(
+                      'https://www.instagram.com/alicia.e_couture?igsh=N2kyaHB1eXdkN20x');
+                  if (await canLaunchUrl(uri)) {
+                    await launchUrl(uri);
+                  } else {
+                    throw "Could not launch at this moment.";
+                  }
+                },
+                child: const Text(
+                  'Instagram',
+                ),
+              )
             ],
           ),
           const SizedBox(
@@ -44,7 +71,7 @@ class ContactPage extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineLarge,
           ),
           const SizedBox(
-            height: 8,
+            height: 16,
           ),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +80,7 @@ class ContactPage extends StatelessWidget {
               SizedBox(
                 width: 8,
               ),
-              Text('6 Suikerbekkie Atlantis'),
+              Text('Atlantis, Cape Town'),
             ],
           )
         ],

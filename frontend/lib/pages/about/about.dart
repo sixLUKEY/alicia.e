@@ -6,7 +6,7 @@ class AboutPage extends StatelessWidget {
   @override
   Widget build(context) {
     return const Center(
-      child: Text('bout'),
+      child: Text('About'),
     );
   }
 }

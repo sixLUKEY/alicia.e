@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/catalog/carousel.dart';
 
 class CatalogPage extends StatelessWidget {
   const CatalogPage({
@@ -7,6 +8,6 @@ class CatalogPage extends StatelessWidget {
 
   @override
   Widget build(context) => const Center(
-        child: Text('Catalog'),
+        child: VerticalSlider(),
       );
 }

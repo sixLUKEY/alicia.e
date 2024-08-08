@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/router/router.dart';
 import 'package:frontend/widgets/navigation/destinations.dart';
 import 'package:go_router/go_router.dart';
 
@@ -66,10 +67,15 @@ class ScaffoldWithDrawerNavBar extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text(
-            'Alicia.e',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface,
+          title: InkWell(
+            onTap: () {
+              context.go(Routes.homeRoute);
+            },
+            child: Text(
+              'alicia.E',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
             ),
           ),
         ),
@@ -106,10 +112,15 @@ class ScaffoldWithNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(
-            'Alicia.e',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface,
+          title: InkWell(
+            onTap: () {
+              context.go(Routes.homeRoute);
+            },
+            child: Text(
+              'alicia.E',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
             ),
           ),
           centerTitle: false,

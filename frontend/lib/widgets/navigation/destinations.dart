@@ -16,6 +16,6 @@ class Destination {
 const List<Destination> destinations = <Destination>[
   Destination(Icons.home, 'Home', Routes.homeRoute),
   Destination(Icons.browse_gallery, 'Catalog', Routes.catalogRoute),
-  Destination(Icons.info, 'About', Routes.aboutRoute),
+  // Destination(Icons.info, 'About', Routes.aboutRoute),
   Destination(Icons.phone, 'Contact', Routes.contactRoute),
 ];
